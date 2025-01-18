@@ -1,5 +1,12 @@
-function HomePage() {
-  return <div>Home page</div>;
+import MenuBar from '../components/MenuBar';
+
+function LandingPage() {
+  return (
+    <>
+      <MenuBar />
+      Home Page
+    </>
+  );
 }
 
-export default HomePage;
+export default LandingPage;

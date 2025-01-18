@@ -4,18 +4,22 @@ import HomePage from './page/HomePage';
 import LoginPage from './page/LoginPage';
 import NotFoundPage from './page/NotFoundPage';
 import LandingPage from './page/LandingPage';
-import ServicePage from './page/ServicePage';
+import StudyPage from './page/StudyPage';
+import UserPage from './page/UserPage';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
   return (
     <>
+      <CssBaseline />
       <BrowserRouter>
         <Routes>
           {/* update page path here */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="home" element={<LandingPage />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="home" element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="services" element={<ServicePage />} />
+          <Route path="study" element={<StudyPage />} />
+          <Route path="user" element={<UserPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
