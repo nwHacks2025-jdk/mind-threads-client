@@ -1,10 +1,11 @@
 import MenuBar from '../components/MenuBar';
+import MindMap from '../components/MindMap';
 
 function LandingPage() {
   return (
     <>
       <MenuBar />
-      Home Page
+      <MindMap />
     </>
   );
 }

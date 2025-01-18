@@ -1,0 +1,132 @@
+{
+  "nodes": [
+    {
+      "id": "category-programming",
+      "category": "Programming",
+      "description": "Category: Programming",
+      "text": "Programming is essential for building applications and solving problems efficiently. It encompasses multiple paradigms, frameworks, and languages that facilitate software development. Programming is the backbone of technology and innovation."
+    },
+    {
+      "id": "subcategory-java",
+      "category": "Java",
+      "description": "Subcategory: Java",
+      "text": "Java is a versatile language used for backend development, mobile applications, and enterprise solutions. It powers many large-scale applications and is known for its portability. Java is widely used in financial services, scientific computing, and gaming."
+    },
+    {
+      "id": "subcategory-javascript",
+      "category": "JavaScript",
+      "description": "Subcategory: JavaScript",
+      "text": "JavaScript is widely used for frontend development, web applications, and server-side scripting with Node.js. It enables interactive and dynamic web pages. JavaScript frameworks like React, Angular, and Vue dominate modern web development."
+    },
+    {
+      "id": "subcategory-data-science",
+      "category": "Data Science",
+      "description": "Subcategory: Data Science",
+      "text": "Data Science involves statistics, AI, machine learning, and data visualization to derive meaningful insights. It is a key field for big data analytics and automation. Data scientists use tools like Python, R, and SQL to process vast amounts of data."
+    },
+    {
+      "id": "subcategory-python",
+      "category": "Python",
+      "description": "Subcategory: Python",
+      "text": "Python is widely used in AI, machine learning, data science, automation, and scripting. Its simplicity and vast ecosystem make it a preferred language for many developers. Python has extensive libraries like NumPy, TensorFlow, and Flask."
+    },
+    {
+      "id": "category-cooking",
+      "category": "Cooking",
+      "description": "Category: Cooking",
+      "text": "Cooking is an essential skill that combines creativity, nutrition, and technique. It involves various methods such as grilling, roasting, and steaming. Cooking is both an art and a science, requiring precision and creativity."
+    },
+    {
+      "id": "subcategory-baking",
+      "category": "Baking",
+      "description": "Subcategory: Baking",
+      "text": "Baking involves the precise combination of ingredients and techniques to create delicious bread, cakes, and pastries. It requires an understanding of chemistry and precise measurements. Baking also includes pastry making and artisanal bread crafting."
+    },
+    {
+      "id": "subcategory-italian-cuisine",
+      "category": "Italian Cuisine",
+      "description": "Subcategory: Italian Cuisine",
+      "text": "Italian cuisine is known for its rich flavors, pasta, pizza, and diverse regional specialties. It emphasizes fresh ingredients and traditional recipes. Italian cuisine includes famous dishes like risotto, lasagna, and tiramisu."
+    },
+    {
+      "id": "subcategory-french-cuisine",
+      "category": "French Cuisine",
+      "description": "Subcategory: French Cuisine",
+      "text": "French cuisine is renowned for its elegant dishes, rich sauces, and sophisticated techniques such as sous vide and flambé. It is known for dishes like coq au vin, boeuf bourguignon, and croissants."
+    },
+    {
+      "id": "subcategory-mexican-cuisine",
+      "category": "Mexican Cuisine",
+      "description": "Subcategory: Mexican Cuisine",
+      "text": "Mexican cuisine is vibrant and flavorful, featuring tacos, tamales, enchiladas, and spicy salsas. It blends indigenous and Spanish influences."
+    },
+    {
+      "id": "category-traveling",
+      "category": "Traveling",
+      "description": "Category: Traveling",
+      "text": "Traveling is the experience of exploring new places, cultures, and cuisines. It broadens perspectives and provides adventure and relaxation."
+    },
+    {
+      "id": "subcategory-adventure-travel",
+      "category": "Adventure Travel",
+      "description": "Subcategory: Adventure Travel",
+      "text": "Adventure travel involves activities like hiking, scuba diving, and skydiving, offering thrilling experiences in exotic locations."
+    },
+    {
+      "id": "subcategory-cultural-travel",
+      "category": "Cultural Travel",
+      "description": "Subcategory: Cultural Travel",
+      "text": "Cultural travel focuses on exploring the history, traditions, and art of different regions, including museums, landmarks, and local festivals."
+    },
+    {
+      "id": "node-1",
+      "category": "Java",
+      "description": "Spring Boot API",
+      "text": "A guide to building REST APIs with Spring Boot, focusing on microservices architecture and scalability. Spring Boot simplifies Java-based web applications."
+    },
+    {
+      "id": "node-2",
+      "category": "Java",
+      "description": "Java Concurrency",
+      "text": "Exploring multithreading and concurrency in Java to build efficient, high-performance applications with synchronized execution. Concurrency is crucial for scalable software."
+    },
+    {
+      "id": "node-3",
+      "category": "JavaScript",
+      "description": "D3.js Demo",
+      "text": "Creating interactive data visualizations with D3.js to represent complex data structures and analytics dashboards. D3.js enables beautiful data-driven storytelling."
+    },
+    {
+      "id": "node-12",
+      "category": "Mexican Cuisine",
+      "description": "Authentic Tacos",
+      "text": "A step-by-step guide to making traditional Mexican tacos with fresh ingredients and homemade tortillas."
+    },
+    {
+      "id": "node-13",
+      "category": "French Cuisine",
+      "description": "Perfect Croissants",
+      "text": "Master the art of making buttery, flaky croissants from scratch with a detailed recipe."
+    }
+  ],
+  "links": [
+    { "source": "category-programming", "target": "subcategory-java" },
+    { "source": "category-programming", "target": "subcategory-javascript" },
+    { "source": "category-programming", "target": "subcategory-data-science" },
+    { "source": "category-programming", "target": "subcategory-python" },
+    { "source": "category-cooking", "target": "subcategory-baking" },
+    { "source": "category-cooking", "target": "subcategory-italian-cuisine" },
+    { "source": "category-cooking", "target": "subcategory-french-cuisine" },
+    { "source": "category-cooking", "target": "subcategory-mexican-cuisine" },
+    {
+      "source": "category-traveling",
+      "target": "subcategory-adventure-travel"
+    },
+    { "source": "category-traveling", "target": "subcategory-cultural-travel" },
+    { "source": "subcategory-java", "target": "node-1" },
+    { "source": "subcategory-java", "target": "node-2" },
+    { "source": "subcategory-javascript", "target": "node-3" },
+    { "source": "subcategory-mexican-cuisine", "target": "node-12" },
+    { "source": "subcategory-french-cuisine", "target": "node-13" }
+  ]
+}
