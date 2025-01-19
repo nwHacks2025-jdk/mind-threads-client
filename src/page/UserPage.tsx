@@ -9,6 +9,7 @@ import axios from 'axios';
 import { MemberStat } from '../types/MemberStats';
 import WelcomeHeader from '../components/WelcomeHeader.tsx';
 import StatContainer from '../components/StatContainer.tsx';
+import StreakContainer from '../components/StreakContainer.tsx';
 
 export default function UserPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -149,15 +150,8 @@ export default function UserPage() {
             }}
           >
             <Grid xs={12} md={4} sx={{ display: 'flex', gap: 3 }}>
-              <StatContainer value={stats.length} height={200}>
-                <Typography>7-Day Productivity Score</Typography>
-              </StatContainer>
-              <Container title="Your GPT Usage Rank" height={200}>
-                <Typography>
-                  You are in the top{' '}
-                  {percentile !== null ? 100 - percentile : '...'}% of users.
-                </Typography>
-              </Container>
+              <StreakContainer value={stats.length} height={200} />
+              <StatContainer value={percentile !== null ? 100 - percentile : 0} height={200} />
             </Grid>
           </Grid>
         </Box>

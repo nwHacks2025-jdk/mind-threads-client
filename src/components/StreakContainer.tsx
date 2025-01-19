@@ -1,18 +1,18 @@
 import { CardContent, Typography, Box } from '@mui/material';
 import Card from '@mui/material/Card';
 
-type StatContainerProps = {
+type StreakContainerProps = {
   height?: number;
   value: number;
   body?: string;
   children?: React.ReactNode;
 };
 
-export default function StatContainer({
+export default function StreakContainer({
   height,
   value,
   children,
-}: StatContainerProps) {
+}: StreakContainerProps) {
   return (
     <Card
       sx={{
@@ -55,7 +55,7 @@ export default function StatContainer({
               fontWeight: 'bold',
               textAlign: 'center',
             }}>
-            {value}%
+            {value}
           </Typography>
           <Typography
             variant="h5"
@@ -67,7 +67,7 @@ export default function StatContainer({
               textAlign: 'center',
             }}
           >
-            Global Top
+             Day Streak ‍🔥
           </Typography>
         </Box>
         {children}
