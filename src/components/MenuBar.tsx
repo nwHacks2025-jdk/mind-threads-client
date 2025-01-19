@@ -22,7 +22,7 @@ export default function MenuBar() {
           <img
             src="/logo.svg"
             alt="logo"
-            height={40}
+            height={55}
             style={{ cursor: 'pointer' }}
             onClick={() => (window.location.href = '/home')}
           />
@@ -32,39 +32,43 @@ export default function MenuBar() {
                 marginLeft: 'auto',
                 marginRight: '10px',
                 display: 'flex',
+                gap: 1,
               }}
             >
               <Button
                 sx={{
                   color: '#101010',
                   borderRadius: 10,
-                  fontSize: 25,
+                  gap: 1,
                 }}
                 onClick={() => (window.location.href = '/home')}
               >
-                <VscHome />
+                <VscHome size={25} />
+                Home
               </Button>
               <Button
                 color="inherit"
                 sx={{
                   color: '#101010',
                   borderRadius: 10,
-                  fontSize: 25,
+                  gap: 1,
                 }}
                 onClick={() => (window.location.href = '/threads')}
               >
-                <VscLibrary />
+                <VscLibrary size={25} />
+                Threads
               </Button>
               <Button
                 color="inherit"
                 sx={{
                   color: '#101010',
                   borderRadius: 10,
-                  fontSize: 25,
+                  gap: 1,
                 }}
                 onClick={() => (window.location.href = '/user')}
               >
-                <VscAccount />
+                <VscAccount size={25} />
+                Profile
               </Button>
             </Box>
           )}

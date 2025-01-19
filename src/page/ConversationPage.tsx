@@ -62,12 +62,13 @@ export default function ConversationPage() {
         <Container title={note.title} />
 
         <Stack
-          direction="row"
+          direction={{ xs: 'column', sm: 'row' }}
           spacing={{ xs: 0.5, sm: 1 }}
           flexWrap="wrap"
-          justifyContent="center" // Center align tags on mobile
+          justifyContent="center"
           sx={{
-            gap: { xs: 0.5, sm: 1 }, // Control spacing responsively
+            gap: { xs: 0.5, sm: 1 },
+            paddingTop: 2,
           }}
         >
           {note.tag1 && <Tag text={note.tag1} medium />}

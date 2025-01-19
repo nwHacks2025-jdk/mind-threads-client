@@ -83,12 +83,16 @@ export default function UserPage() {
         (sum, stat) => sum + (stat.averageUsage ?? 0),
         0
       );
+
       if (allUserTotal === 0) {
         setPercentile(0);
         return;
       }
-      const percentile = (userTotal / allUserTotal) * 100;
-      setPercentile(Math.round(percentile));
+
+      let percentile = (userTotal / allUserTotal) * 100;
+      percentile = Math.min(Math.max(percentile, 0), 100);
+
+      setPercentile(parseFloat(percentile.toFixed(2)));
     }
   }, [stats, avgStats]);
 
@@ -133,9 +137,6 @@ export default function UserPage() {
     );
   }
 
-  console.log(stats)
-  console.log(avgStats)
-
   return (
     <>
       <MenuBar />
@@ -153,25 +154,22 @@ export default function UserPage() {
           >
             <Grid xs={12} md={4} sx={{ display: 'flex', gap: 3 }}>
               <StreakContainer value={stats.length} height={200} />
-              <StatContainer value={percentile !== null ? 100 - percentile : 0} height={200} />
+              <StatContainer
+                value={percentile !== null ? 100 - percentile : 0}
+                height={200}
+              />
             </Grid>
           </Grid>
         </Box>
 
-        <Box sx={{ mt: 3}}>
-          <BarTitleContainer
-            title="Chat Overview"
-            height={400}
-          >
+        <Box sx={{ mt: 3 }}>
+          <BarTitleContainer title="Daily Thread Count" height={500}>
             <SimpleBarChart data={stats} />
           </BarTitleContainer>
         </Box>
 
         <Box sx={{ mt: 3 }}>
-          <BarTitleContainer
-            title="Global Average"
-            height={500}
-          >
+          <BarTitleContainer title="Global Usage Average" height={600}>
             <StackedBarChart individualData={stats} averageData={avgStats} />
           </BarTitleContainer>
         </Box>

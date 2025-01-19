@@ -53,28 +53,30 @@ export default function StatContainer({
               alignItems: 'flex-end',
             }}
           >
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{
-              fontSize: '4rem',
-              color: '#32E57E',
-              fontWeight: 'bold',
-              textAlign: 'center',
-            }}>
-            {value}
-          </Typography>
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{
-              fontSize: '3rem',
-              color: '#32E57E',
-              fontWeight: 'bold',
-              textAlign: 'center',
-            }}>
-            %
-          </Typography>
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{
+                fontSize: '4rem',
+                color: '#32E57E',
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}
+            >
+              {value}
+            </Typography>
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{
+                fontSize: '3rem',
+                color: '#32E57E',
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}
+            >
+              %
+            </Typography>
           </Box>
           <Typography
             variant="h5"
@@ -86,7 +88,7 @@ export default function StatContainer({
               textAlign: 'center',
             }}
           >
-            Global Top
+            Global Top 🏅
           </Typography>
         </Box>
         {children}

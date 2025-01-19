@@ -54,7 +54,8 @@ export default function StreakContainer({
               color: '#32E57E',
               fontWeight: 'bold',
               textAlign: 'center',
-            }}>
+            }}
+          >
             {value}
           </Typography>
           <Typography
@@ -67,7 +68,7 @@ export default function StreakContainer({
               textAlign: 'center',
             }}
           >
-             Day Streak
+            Day Streak 🔥
           </Typography>
         </Box>
         {children}
