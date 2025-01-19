@@ -1,5 +1,4 @@
 import { Grid, Box, CircularProgress, Typography } from '@mui/joy';
-import Container from '../components/Container';
 import MenuBar from '../components/MenuBar';
 import SimpleBarChart from '../components/BarChart';
 import StackedBarChart from '../components/StackedBarChart';
@@ -10,6 +9,7 @@ import { MemberStat } from '../types/MemberStats';
 import WelcomeHeader from '../components/WelcomeHeader.tsx';
 import StatContainer from '../components/StatContainer.tsx';
 import StreakContainer from '../components/StreakContainer.tsx';
+import BarTitleContainer from '../components/BarTitleContainer.tsx';
 
 export default function UserPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -79,7 +79,6 @@ export default function UserPage() {
   useEffect(() => {
     if (stats.length > 0 && avgStats.length > 0) {
       const userTotal = stats.reduce((sum, stat) => sum + stat.count, 0);
-      console.log(userTotal);
       const allUserTotal = avgStats.reduce(
         (sum, stat) => sum + (stat.averageUsage ?? 0),
         0
@@ -134,6 +133,9 @@ export default function UserPage() {
     );
   }
 
+  console.log(stats)
+  console.log(avgStats)
+
   return (
     <>
       <MenuBar />
@@ -156,24 +158,22 @@ export default function UserPage() {
           </Grid>
         </Box>
 
-        <Box sx={{ mt: 3 }}>
-          <Container
-            title="Daily Usage"
-            body="Your usage over the past week."
+        <Box sx={{ mt: 3}}>
+          <BarTitleContainer
+            title="Chat Overview"
             height={400}
           >
             <SimpleBarChart data={stats} />
-          </Container>
+          </BarTitleContainer>
         </Box>
 
         <Box sx={{ mt: 3 }}>
-          <Container
-            title="Average Engagement Metrics (All Members)"
-            body="Detailed average engagement metrics across all members."
+          <BarTitleContainer
+            title="Global Average"
             height={500}
           >
             <StackedBarChart individualData={stats} averageData={avgStats} />
-          </Container>
+          </BarTitleContainer>
         </Box>
       </Box>
     </>

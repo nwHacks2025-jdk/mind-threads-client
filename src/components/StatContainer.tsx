@@ -46,6 +46,13 @@ export default function StatContainer({
             marginBottom: 1,
           }}
         >
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'flex-end',
+            }}
+          >
           <Typography
             variant="h5"
             component="h2"
@@ -55,8 +62,20 @@ export default function StatContainer({
               fontWeight: 'bold',
               textAlign: 'center',
             }}>
-            {value}%
+            {value}
           </Typography>
+          <Typography
+            variant="h5"
+            component="h2"
+            sx={{
+              fontSize: '3rem',
+              color: '#32E57E',
+              fontWeight: 'bold',
+              textAlign: 'center',
+            }}>
+            %
+          </Typography>
+          </Box>
           <Typography
             variant="h5"
             component="h2"

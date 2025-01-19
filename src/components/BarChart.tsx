@@ -7,8 +7,6 @@ interface SimpleBarChartProps {
 }
 
 export default function SimpleBarChart({ data }: SimpleBarChartProps) {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const labels = data.map((item) => {
     const [year, month, day] = item.date;
@@ -23,9 +21,8 @@ export default function SimpleBarChart({ data }: SimpleBarChartProps) {
     <Box sx={{ width: '100%', maxWidth: 700, overflowX: 'auto' }}>
       <BarChart
         xAxis={[{ scaleType: 'band', data: labels }]}
-        series={[{ data: counts }]}
-        width={isMobile ? 300 : 600}
-        height={isMobile ? 250 : 300}
+        series={[{ data: counts, color: '#F9D66C' }]}
+        style={{ width: '100%', height: '40vh', color: 'black' }}
       />
     </Box>
   );

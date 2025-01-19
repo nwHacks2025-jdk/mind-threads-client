@@ -1,18 +1,19 @@
 import { CardContent, Typography, Box } from '@mui/material';
 import Card from '@mui/material/Card';
 
-type StreakContainerProps = {
+type BarTitleContainerProps = {
   height?: number;
-  value: number;
+  title: string;
   body?: string;
   children?: React.ReactNode;
 };
 
-export default function StreakContainer({
+export default function BarTitleContainer({
   height,
-  value,
+  title,
+  body,
   children,
-}: StreakContainerProps) {
+}: BarTitleContainerProps) {
   return (
     <Card
       sx={{
@@ -23,8 +24,9 @@ export default function StreakContainer({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: '12px',
-        padding: 2,
-        backgroundColor: '#FAFAFA',
+        boxShadow: 3,
+        padding: 0,
+        backgroundColor: '#FAFAFA'
       }}
     >
       <CardContent
@@ -41,35 +43,19 @@ export default function StreakContainer({
             width: '100%',
             display: 'flex',
             justifyContent: 'center',
-            flexDirection: 'column',
             alignItems: 'center',
-            marginBottom: 1,
+            marginBottom: 3,
           }}
         >
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{
-              fontSize: '4rem',
-              color: '#32E57E',
-              fontWeight: 'bold',
-              textAlign: 'center',
-            }}>
-            {value}
-          </Typography>
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{
-              fontSize: '1.5rem',
-              color: '#1F2937',
-              fontWeight: 'bold',
-              textAlign: 'center',
-            }}
-          >
-             Day Streak
+          <Typography variant="h5" component="h2" sx={{fontWeight: 600}}>
+            {title}
           </Typography>
         </Box>
+        {body && (
+          <Typography variant="body2" component="p">
+            {body}
+          </Typography>
+        )}
         {children}
       </CardContent>
     </Card>

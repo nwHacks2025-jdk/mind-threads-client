@@ -24,25 +24,24 @@ export default function StackedBarChart({
   );
 
   return (
-    <Box sx={{ width: '100%', maxWidth: 900, overflowX: 'hidden' }}>
+    <Box sx={{ width: '100%', maxWidth: 900, overflowX: 'auto' }}>
       <BarChart
         xAxis={[{ scaleType: 'band', data: sortedLabels }]}
         series={[
           {
             data: averageSeriesData,
             stack: 'total',
-            color: 'rgba(255, 255, 0, 0.7)',
-            label: 'Average Usage',
+            color: '#D6E6C1',
+            label: 'Global Average',
           },
           {
             data: individualSeriesData,
             stack: 'total',
-            color: 'rgba(0, 128, 0, 0.9)',
-            label: 'Individual Usage',
+            color: '#F9D66C',
+            label: 'You',
           },
         ]}
-        width={isMobile ? 400 : 800}
-        height={isMobile ? 300 : 400}
+        style={{ width: '100%', height: '50vh', color: 'black' }}
       />
     </Box>
   );
