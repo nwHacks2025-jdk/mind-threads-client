@@ -27,7 +27,7 @@ export default function MenuBar() {
             onClick={() => (window.location.href = '/home')}
           />
           {!isMobile && (
-            <Box sx={{ marginLeft: 'auto', display: 'flex' }}>
+            <Box sx={{ marginLeft: 'auto', marginRight: '10px', display: 'flex' }}>
               <Button
                 color="inherit"
                 sx={{ color: 'black' }}
