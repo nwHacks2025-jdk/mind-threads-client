@@ -57,9 +57,6 @@ export default function LandingPage() {
         elevation={3}
         sx={{ padding: 4, textAlign: 'center', width: '100%', minWidth: 400 }}
       >
-        <Typography variant="h5" component="h1" gutterBottom>
-          The Ultimate Extension for Your Mind
-        </Typography>
         <Box
           sx={{
             display: 'flex',
