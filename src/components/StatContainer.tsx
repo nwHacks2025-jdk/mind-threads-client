@@ -9,10 +9,10 @@ type StatContainerProps = {
 };
 
 export default function StatContainer({
-                                    height,
-                                    value,
-                                    children,
-                                  }: StatContainerProps) {
+  height,
+  value,
+  children,
+}: StatContainerProps) {
   return (
     <Card
       sx={{
@@ -45,13 +45,17 @@ export default function StatContainer({
             marginBottom: 1,
           }}
         >
-          <Typography variant="h5" component="h2"   sx={{
-            fontSize: '32px',
-            color: 'primary.main',
-            fontWeight: 'bold',
-            textAlign: 'center',
-            margin: '8px 0',
-          }}>
+          <Typography
+            variant="h5"
+            component="h2"
+            sx={{
+              fontSize: '32px',
+              color: 'primary.main',
+              fontWeight: 'bold',
+              textAlign: 'center',
+              margin: '8px 0',
+            }}
+          >
             {value} days this week
           </Typography>
         </Box>
