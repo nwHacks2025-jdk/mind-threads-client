@@ -15,10 +15,12 @@ export default function UserPage() {
   const [error, setError] = useState<string | null>(null);
   const [avgError, setAvgError] = useState<string | null>(null);
   const [percentile, setPercentile] = useState<number | null>(null);
+  const [userName, setUserName] = useState<string>();
 
   useEffect(() => {
     const fetchMemberStats = async () => {
-      const email = 'test@email.com';
+      const email = localStorage.getItem('email') || '';
+      setUserName(email.split('@')[0]);
 
       try {
         setIsLoading(true);
@@ -133,7 +135,7 @@ export default function UserPage() {
     <>
       <MenuBar />
       <Box sx={{ p: 3 }}>
-        <Container title={`Hi, User`} />
+        <Container title={`Hi, ${userName}`} />
 
         <Box sx={{ mt: 3 }}>
           <Grid
