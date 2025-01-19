@@ -87,6 +87,7 @@ export default function ThreadsPage() {
               <Grid
                 key={note.id}
                 xs={12}
+                sm={6}
                 md={4}
                 sx={{ display: 'flex', justifyContent: 'center' }}
               >
