@@ -9,6 +9,7 @@ import ConversationPage from './page/ConversationPage';
 import { AuthProvider } from './context/AuthContent';
 import { ProtectedRoute } from './ProtectedRoutes';
 import ThreadsPage from './page/ThreadsPage';
+import ThreadsBookPage from './page/ThreadsBookPage.tsx';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route element={<ProtectedRoute />}>
               <Route path="home" element={<HomePage />} />
               <Route path="threads" element={<ThreadsPage />} />
+              <Route path="threads-book" element={<ThreadsBookPage />} />
               <Route path="threads/:tag" element={<ThreadsPage />} />
               <Route path="user" element={<UserPage />} />
               <Route path="conversation/:tag" element={<ConversationPage />} />

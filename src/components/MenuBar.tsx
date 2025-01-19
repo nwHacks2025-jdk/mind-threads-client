@@ -53,7 +53,7 @@ export default function MenuBar() {
                   borderRadius: 10,
                   gap: 1,
                 }}
-                onClick={() => (window.location.href = '/threads')}
+                onClick={() => (window.location.href = '/threads-book')}
               >
                 <VscLibrary size={25} />
                 Threads
