@@ -1,27 +1,14 @@
-import { useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Container from '../components/Container';
 import MenuBar from '../components/MenuBar';
 import Tag from '../components/Tag';
 import { LocationState } from '../types/Notes';
 
 export default function ConversationPage() {
-  const { tag } = useParams<{ tag: string }>();
   const location = useLocation();
   const state = location.state as LocationState;
 
   const note = state?.note;
-
-  useEffect(() => {
-    if (tag) {
-      console.log(tag);
-    }
-    if (note) {
-      console.log('Received Note:', note);
-    } else {
-      console.warn('No note data received');
-    }
-  }, [tag, note]);
 
   if (!note) {
     return (

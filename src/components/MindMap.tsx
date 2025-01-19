@@ -19,7 +19,7 @@ export default function MindMap() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const email = localStorage.getItem('email') || '';    
+    const email = localStorage.getItem('email') || '';
     setIsLoading(true);
     setError(null);
 

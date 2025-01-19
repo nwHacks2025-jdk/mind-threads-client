@@ -15,7 +15,7 @@ export default function ThreadsPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const email = localStorage.getItem('email') || '';    
+    const email = localStorage.getItem('email') || '';
     setIsLoading(true);
 
     if (tag) {

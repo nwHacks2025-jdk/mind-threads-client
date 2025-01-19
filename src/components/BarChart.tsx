@@ -1,24 +1,29 @@
 import { BarChart } from '@mui/x-charts/BarChart';
 import { useTheme, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/joy';
+import { MemberStat } from '../types/MemberStats';
+interface SimpleBarChartProps {
+  data: MemberStat[];
+}
 
-const data = [
-  { label: 'Jan', value: 30 },
-  { label: 'Feb', value: 50 },
-  { label: 'Mar', value: 80 },
-  { label: 'Apr', value: 45 },
-  { label: 'May', value: 70 },
-];
-
-export default function SimpleBarChart() {
+export default function SimpleBarChart({ data }: SimpleBarChartProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const labels = data.map((item) => {
+    const [year, month, day] = item.date;
+    const monthStr = month.toString().padStart(2, '0');
+    const dayStr = day.toString().padStart(2, '0');
+    return `${year}-${monthStr}-${dayStr}`;
+  });
+
+  const counts = data.map((item) => item.count);
 
   return (
     <Box sx={{ width: '100%', maxWidth: 700, overflowX: 'auto' }}>
       <BarChart
-        xAxis={[{ scaleType: 'band', data: data.map((item) => item.label) }]}
-        series={[{ data: data.map((item) => item.value) }]}
+        xAxis={[{ scaleType: 'band', data: labels }]}
+        series={[{ data: counts }]}
         width={isMobile ? 300 : 600}
         height={isMobile ? 250 : 300}
       />

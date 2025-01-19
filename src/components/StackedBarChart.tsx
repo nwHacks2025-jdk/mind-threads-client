@@ -1,35 +1,48 @@
 import { BarChart } from '@mui/x-charts/BarChart';
 import { useTheme, useMediaQuery } from '@mui/material';
 import { Box } from '@mui/joy';
+import { StackedBarChartProps } from '../types/MemberStats';
+import { getSortedUniqueDates, createDataMap } from '../util/userStats';
 
-const data = [
-  { label: 'Jan 12', values: [60, 50] },
-  { label: 'Jan 13', values: [60, 30] },
-  { label: 'Jan 14', values: [60, 20] },
-  { label: 'Jan 15', values: [40, 30] },
-  { label: 'Jan 16', values: [60, 20] },
-  { label: 'Jan 17', values: [70, 10] },
-  { label: 'Jan 18', values: [90, 0] },
-];
-
-export default function StackedBarChart() {
+export default function StackedBarChart({
+  individualData,
+  averageData,
+}: StackedBarChartProps) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const sortedLabels = getSortedUniqueDates(individualData, averageData);
+
+  const individualDataMap = createDataMap(individualData, 'count');
+  const averageDataMap = createDataMap(averageData, 'averageUsage');
+
+  const individualSeriesData = sortedLabels.map(
+    (label) => individualDataMap.get(label) ?? 0
+  );
+  const averageSeriesData = sortedLabels.map(
+    (label) => averageDataMap.get(label) ?? 0
+  );
+
   return (
-    <Box sx={{ width: '100%', maxWidth: 700, overflowX: 'auto' }}>
+    <Box sx={{ width: '100%', maxWidth: 900, overflowX: 'hidden' }}>
       <BarChart
-        xAxis={[{ scaleType: 'band', data: data.map((item) => item.label) }]}
+        xAxis={[{ scaleType: 'band', data: sortedLabels }]}
         series={[
           {
-            data: data.map((item) => item.values[0]),
+            data: averageSeriesData,
             stack: 'total',
-            color: '#333',
+            color: 'rgba(255, 255, 0, 0.7)',
+            label: 'Average Usage',
           },
-          { data: data.map((item) => item.values[1]), stack: 'total' },
+          {
+            data: individualSeriesData,
+            stack: 'total',
+            color: 'rgba(0, 128, 0, 0.9)',
+            label: 'Individual Usage',
+          },
         ]}
-        width={isMobile ? 300 : 600}
-        height={isMobile ? 250 : 300}
+        width={isMobile ? 400 : 800}
+        height={isMobile ? 300 : 400}
       />
     </Box>
   );

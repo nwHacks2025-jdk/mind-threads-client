@@ -1,4 +1,4 @@
-import { CardContent, Typography } from '@mui/material';
+import { CardContent, Typography, Box } from '@mui/material';
 import Card from '@mui/material/Card';
 
 type ContainerProps = {
@@ -23,17 +23,38 @@ export default function Container({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        rounded: 'xl',
+        borderRadius: '12px',
         boxShadow: 3,
+        padding: 2,
       }}
     >
-      <CardContent>
-        <Typography variant="h5" component="h2">
-          {title}
-        </Typography>
-        <Typography variant="body2" component="p">
-          {body}
-        </Typography>
+      <CardContent
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: 1,
+          }}
+        >
+          <Typography variant="h5" component="h2">
+            {title}
+          </Typography>
+        </Box>
+        {body && (
+          <Typography variant="body2" component="p">
+            {body}
+          </Typography>
+        )}
         {children}
       </CardContent>
     </Card>
