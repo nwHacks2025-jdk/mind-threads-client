@@ -47,7 +47,7 @@ export default function ConversationCard({ note }: ConversationCardProps) {
             textColor="success.plainColor"
             sx={{ fontWeight: 'md', textAlign: 'left' }}
           >
-            Conversation - {note.title}
+            {note.title}
           </Typography>
           {formattedDate && (
             <Typography

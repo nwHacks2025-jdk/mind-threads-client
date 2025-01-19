@@ -42,19 +42,19 @@ export default function ThreadsPage() {
   }, [tag]);
 
   return (
-    <Box
+    <Box      
       sx={{
         display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
+        flexDirection: 'column',        
+        backgroundColor: "#040F0F"
       }}
     >
       <MenuBar />
       <Box
         sx={{
           flexGrow: 1,
-          overflowY: 'auto',
-          padding: 2,
+          // overflowY: 'auto',
+          padding: 2,          
         }}
       >
         {isLoading ? (

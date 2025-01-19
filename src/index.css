@@ -1,11 +1,17 @@
+@font-face {
+  font-family: "BM";
+  src: local(
+    BMJUA_otf
+  ),
+  url('./src/assets/fonts/BM/BMJUA_otf.otf');
+}
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #ffffff;
+  background-color: #040F0F;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,6 +34,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #040F0F;
 }
 
 h1 {
@@ -57,7 +64,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #040F0F;
   }
   a:hover {
     color: #747bff;
