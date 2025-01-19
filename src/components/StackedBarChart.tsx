@@ -1,4 +1,6 @@
 import { BarChart } from '@mui/x-charts/BarChart';
+import { useTheme, useMediaQuery } from '@mui/material';
+import { Box } from '@mui/joy';
 
 const data = [
   { label: 'Jan 12', values: [60, 50] },
@@ -11,19 +13,24 @@ const data = [
 ];
 
 export default function StackedBarChart() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
   return (
-    <BarChart
-      xAxis={[{ scaleType: 'band', data: data.map((item) => item.label) }]}
-      series={[
-        {
-          data: data.map((item) => item.values[0]),
-          stack: 'total',
-          color: '#333',
-        },
-        { data: data.map((item) => item.values[1]), stack: 'total' },
-      ]}
-      width={500}
-      height={300}
-    />
+    <Box sx={{ width: '100%', maxWidth: 700, overflowX: 'auto' }}>
+      <BarChart
+        xAxis={[{ scaleType: 'band', data: data.map((item) => item.label) }]}
+        series={[
+          {
+            data: data.map((item) => item.values[0]),
+            stack: 'total',
+            color: '#333',
+          },
+          { data: data.map((item) => item.values[1]), stack: 'total' },
+        ]}
+        width={isMobile ? 300 : 600}
+        height={isMobile ? 250 : 300}
+      />
+    </Box>
   );
 }

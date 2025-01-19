@@ -43,8 +43,9 @@ export default function UserPage() {
             title="Daily Usage"
             body="Lorem epsum dolor sit amet"
             height={400}
-            children={<SimpleBarChart />}
-          />
+          >
+            <SimpleBarChart />
+          </Container>
         </Box>
 
         <Box sx={{ mt: 3 }}>
@@ -52,8 +53,9 @@ export default function UserPage() {
             title="Among us"
             body="Lorem epsum dolor sit amet"
             height={400}
-            children={<StackedBarChart />}
-          />
+          >
+            <StackedBarChart />
+          </Container>
         </Box>
       </Box>
     </>

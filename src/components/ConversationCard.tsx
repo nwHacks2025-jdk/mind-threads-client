@@ -11,7 +11,15 @@ export default function ConversationCard() {
     <Card
       orientation="horizontal"
       variant="outlined"
-      sx={{ width: 350, cursor: 'pointer' }}
+      sx={{
+        width: 350,
+        cursor: 'pointer',
+        boxShadow: '0px 3px 3px rgba(0, 0, 0, 0.2)',
+        transition: 'box-shadow 0.3s ease-in-out',
+        '&:hover': {
+          boxShadow: '0px 6px 12px rgba(0, 0, 0, 0.3)',
+        },
+      }}
       onClick={() => (window.location.href = 'conversation')}
     >
       <CardContent>

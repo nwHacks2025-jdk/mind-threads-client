@@ -1,33 +1,37 @@
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import HomePage from './page/HomePage';
-import LoginPage from './page/LoginPage';
 import NotFoundPage from './page/NotFoundPage';
 import LandingPage from './page/LandingPage';
 import StudyPage from './page/StudyPage';
 import UserPage from './page/UserPage';
 import CssBaseline from '@mui/material/CssBaseline';
 import ConversationPage from './page/ConversationPage';
+import { AuthProvider } from './context/AuthContent';
+import { ProtectedRoute } from './ProtectedRoutes';
 
 function App() {
   return (
-    <div className="app-container">
+    <AuthProvider>
       <CssBaseline />
       <BrowserRouter>
-        <div className="main-content">
+        <div className="app-container">
           <Routes>
-            {/* update page path here */}
             <Route path="/" element={<LandingPage />} />
-            <Route path="home" element={<HomePage />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="study" element={<StudyPage />} />
-            <Route path="user" element={<UserPage />} />
-            <Route path="conversation" element={<ConversationPage />} />
+
+            {/* protected routes */}
+            <Route element={<ProtectedRoute />}>
+              <Route path="home" element={<HomePage />} />
+              <Route path="study" element={<StudyPage />} />
+              <Route path="user" element={<UserPage />} />
+              <Route path="conversation" element={<ConversationPage />} />
+            </Route>
+
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </BrowserRouter>
-    </div>
+    </AuthProvider>
   );
 }
 

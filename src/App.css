@@ -2,12 +2,7 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-}
-
-.main-content {
-  flex-grow: 1;
-  width: 100%;
-  padding-top: 100px;
+  padding-top: 80px;
   padding-bottom: 10%;
   padding-left: 5%;
   padding-right: 5%;

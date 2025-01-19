@@ -1,51 +1,67 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */ // fix later
+import { useEffect, useState, useRef } from 'react';
 import { ForceGraph3D } from 'react-force-graph';
+import { getTopic } from '../api/getTopic';
+import { Link, Node } from '../types/MindMap';
 
 export default function MindMap() {
   const [graphData, setGraphData] = useState<{
-    nodes: any[];
-    links: any[];
+    nodes: Node[];
+    links: Link[];
   } | null>(null);
+  const graphRef = useRef<any>(null);
 
   useEffect(() => {
-    // TODO: fetch data from the server
-    fetch('/datasets/data.json')
-      .then((res) => res.json())
+    getTopic('test@email.com')
       .then((data) => {
-        const nodeDegreeMap: Record<string, number> = {};
+        if (!data || !data.nodes || !data.links) {
+          throw new Error('Invalid graph data format');
+        }
 
-        data.links.forEach((link: { source: string; target: string }) => {
-          nodeDegreeMap[link.source] = (nodeDegreeMap[link.source] || 0) + 1;
-          nodeDegreeMap[link.target] = (nodeDegreeMap[link.target] || 0) + 1;
-        });
+        const nodes: Node[] = data.nodes.map((node: any) => ({
+          id: node.category,
+          label: node.category,
+          val: node.count,
+          group: node.subcategory.length,
+        }));
 
-        // nodes based on size
-        // TODO: change the weight factor based on node.count
-        const updatedData = {
-          ...data,
-          nodes: data.nodes.map((node: any) => ({
-            ...node,
-            val:
-              (node.text ? node.text.length * 0.01 : 1) +
-              (nodeDegreeMap[node.id] || 0) * 0.1, // weight factor
-          })),
-        };
+        const nodeIds = new Set(nodes.map((n) => n.id));
+        const links: Link[] = data.links
+          .filter(
+            (link: any) => nodeIds.has(link.source) && nodeIds.has(link.target)
+          )
+          .map((link: any) => ({
+            source: link.source,
+            target: link.target,
+          }));
 
-        setGraphData(updatedData);
+        setGraphData({ nodes, links });
       })
       .catch((error) => console.error('Error loading graph data:', error));
   }, []);
 
-  console.log(graphData);
+  useEffect(() => {
+    const handleResize = () => {
+      if (graphRef.current) {
+        setTimeout(() => {
+          graphRef.current.zoomToFit(1000);
+        }, 200);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   if (!graphData) return <div>Loading...</div>;
 
   return (
     <ForceGraph3D
+      ref={graphRef}
       graphData={graphData}
       backgroundColor="#FFFFFF"
-      nodeLabel={(node) => `<div><b>${node.category}</div>`}
-      nodeAutoColorBy="category"
+      nodeLabel={(node) => `<div><b>${node.label}</b></div>`}
+      nodeAutoColorBy="id"
       linkColor={() => 'rgba(14, 14, 14, 0.2)'}
       linkOpacity={1}
       linkWidth={0.5}

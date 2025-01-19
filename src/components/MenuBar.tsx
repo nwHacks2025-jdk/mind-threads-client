@@ -31,6 +31,14 @@ export default function MenuBar() {
               <Button
                 color="inherit"
                 sx={{ color: 'black' }}
+                onClick={() => (window.location.href = 'home')}
+              >
+                <HomeIcon sx={{ mr: 1 }} />
+                Home
+              </Button>
+              <Button
+                color="inherit"
+                sx={{ color: 'black' }}
                 onClick={() => (window.location.href = 'study')}
               >
                 <BookIcon sx={{ mr: 1 }} />
