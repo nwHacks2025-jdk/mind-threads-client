@@ -65,11 +65,11 @@ export default function ThreadsPage() {
       }}
     >
       <MenuBar />
-      <div style={{ display: 'flex', paddingTop: 20, paddingBottom: 30 }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 20, paddingBottom: 30 }}>
         <Tag large text={tag || 'All'} />
       </div>
 
-      <Box sx={{ display: 'flex', maxWidth: 400, marginBottom: 2 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', marginBottom: 2 }}>
         <TextField
           label="Search for tags"
           variant="outlined"
