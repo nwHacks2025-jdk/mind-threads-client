@@ -61,22 +61,22 @@ export default function ConversationCard({ note }: ConversationCardProps) {
 
         <Grid container spacing={1} sx={{ mt: 1 }}>
           {note.tag2 && (
-            <Grid xs={3}>
+            <Grid xs={5}>
               <Tag text={note.tag2} />
             </Grid>
           )}
           {note.tag3 && (
-            <Grid xs={3}>
+            <Grid xs={5}>
               <Tag text={note.tag3} />
             </Grid>
           )}
           {note.tag4 && (
-            <Grid xs={3}>
+            <Grid xs={5}>
               <Tag text={note.tag4} />
             </Grid>
           )}
           {note.tag5 && (
-            <Grid xs={3}>
+            <Grid xs={5}>
               <Tag text={note.tag5} />
             </Grid>
           )}
