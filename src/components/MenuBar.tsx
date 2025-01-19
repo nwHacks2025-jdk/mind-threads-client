@@ -20,7 +20,7 @@ export default function MenuBar() {
       <AppBar position="fixed" sx={{ backgroundColor: '#59da90' }}>
         <Toolbar>
           <img
-            src="logo.svg"
+            src="/logo.svg"
             alt="logo"
             height={40}
             style={{ cursor: 'pointer' }}
@@ -31,7 +31,7 @@ export default function MenuBar() {
               <Button
                 color="inherit"
                 sx={{ color: 'black' }}
-                onClick={() => (window.location.href = 'home')}
+                onClick={() => (window.location.href = '/home')}
               >
                 <HomeIcon sx={{ mr: 1 }} />
                 Home
@@ -39,7 +39,7 @@ export default function MenuBar() {
               <Button
                 color="inherit"
                 sx={{ color: 'black' }}
-                onClick={() => (window.location.href = 'study')}
+                onClick={() => (window.location.href = '/threads')}
               >
                 <BookIcon sx={{ mr: 1 }} />
                 Notes
@@ -47,7 +47,7 @@ export default function MenuBar() {
               <Button
                 color="inherit"
                 sx={{ color: 'black' }}
-                onClick={() => (window.location.href = 'user')}
+                onClick={() => (window.location.href = '/user')}
               >
                 <PersonIcon sx={{ mr: 1 }} />
                 User

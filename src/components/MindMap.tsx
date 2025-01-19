@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */ // fix later
 import { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ForceGraph3D } from 'react-force-graph';
 import { getTopic } from '../api/getTopic';
 import { Link, Node } from '../types/MindMap';
@@ -10,6 +11,7 @@ export default function MindMap() {
     links: Link[];
   } | null>(null);
   const graphRef = useRef<any>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getTopic('test@email.com')
@@ -68,6 +70,7 @@ export default function MindMap() {
       nodeVal={(node) => node.val}
       onNodeClick={(node) => {
         console.log(node);
+        navigate(`/threads/${node.label}`);
       }}
     />
   );

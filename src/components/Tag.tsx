@@ -1,5 +1,5 @@
 type TagProps = {
-  text: string;
+  text?: string;
   large?: boolean;
 };
 

@@ -1,12 +1,36 @@
+import { useNavigate } from 'react-router-dom';
 import Card from '@mui/joy/Card';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import Typography from '@mui/joy/Typography';
-import Tag from './Tag';
+import Tag from '../components/Tag';
 import { Stack } from '@mui/material';
 import { Grid } from '@mui/joy';
+import { ConversationCardProp } from '../types/ConversationCard';
 
-export default function ConversationCard() {
+export default function ConversationCard({
+  title,
+  topic,
+  tag1,
+  tag2,
+  tag3,
+  tag4,
+  tag5,
+  messageAt,
+}: ConversationCardProp) {
+  const navigate = useNavigate();
+
+  const formattedDate = messageAt
+    ? messageAt.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+      })
+    : '';
+
   return (
     <Card
       orientation="horizontal"
@@ -20,37 +44,52 @@ export default function ConversationCard() {
           boxShadow: '0px 6px 12px rgba(0, 0, 0, 0.3)',
         },
       }}
-      onClick={() => (window.location.href = 'conversation')}
+      onClick={() => navigate(`/conversation/${title}`)}
     >
       <CardContent>
         <Stack>
-          {/* TODO: update conversation title */}
           <Typography
             textColor="success.plainColor"
             sx={{ fontWeight: 'md', textAlign: 'left' }}
           >
-            Conversation
+            Conversation - {title}
           </Typography>
-          {/* TODO: update date and time */}
-          <Typography level="body-xs" sx={{ textAlign: 'left' }}>
-            Date/Time
-          </Typography>
+          {formattedDate && (
+            <Typography
+              level="body-xs"
+              sx={{ textAlign: 'left', color: 'text.secondary' }}
+            >
+              {formattedDate}
+            </Typography>
+          )}
         </Stack>
 
-        {/* TODO: update tags */}
         <Grid container spacing={1} sx={{ mt: 1 }}>
-          <Grid xs={3}>
-            <Tag text="Tag#1" />
-          </Grid>
-          <Grid xs={3}>
-            <Tag text="Tag#2" />
-          </Grid>
-          <Grid xs={3}>
-            <Tag text="Tag#3" />
-          </Grid>
-          <Grid xs={3}>
-            <Tag text="Tag#4" />
-          </Grid>
+          {tag1 && (
+            <Grid xs={3}>
+              <Tag text={tag1} />
+            </Grid>
+          )}
+          {tag2 && (
+            <Grid xs={3}>
+              <Tag text={tag2} />
+            </Grid>
+          )}
+          {tag3 && (
+            <Grid xs={3}>
+              <Tag text={tag3} />
+            </Grid>
+          )}
+          {tag4 && (
+            <Grid xs={3}>
+              <Tag text={tag4} />
+            </Grid>
+          )}
+          {tag5 && (
+            <Grid xs={3}>
+              <Tag text={tag5} />
+            </Grid>
+          )}
         </Grid>
       </CardContent>
 
@@ -69,7 +108,7 @@ export default function ConversationCard() {
           borderColor: 'divider',
         }}
       >
-        Topic
+        {topic && topic}
       </CardOverflow>
     </Card>
   );
