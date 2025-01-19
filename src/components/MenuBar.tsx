@@ -24,7 +24,7 @@ export default function MenuBar() {
             alt="logo"
             height={40}
             style={{ cursor: 'pointer' }}
-            onClick={() => (window.location.href = 'home')}
+            onClick={() => (window.location.href = '/home')}
           />
           {!isMobile && (
             <Box sx={{ marginLeft: 'auto', display: 'flex' }}>
@@ -71,17 +71,17 @@ export default function MenuBar() {
           <BottomNavigationAction
             label="Home"
             icon={<HomeIcon />}
-            onClick={() => (window.location.href = 'home')}
+            onClick={() => (window.location.href = '/home')}
           />
           <BottomNavigationAction
             label="Study"
             icon={<SchoolIcon />}
-            onClick={() => (window.location.href = 'study')}
+            onClick={() => (window.location.href = '/study')}
           />
           <BottomNavigationAction
             label="User"
             icon={<PersonIcon />}
-            onClick={() => (window.location.href = 'user')}
+            onClick={() => (window.location.href = '/user')}
           />
         </BottomNavigation>
       )}

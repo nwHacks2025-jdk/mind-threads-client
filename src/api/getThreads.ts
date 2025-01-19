@@ -4,7 +4,6 @@ import { api } from '../util/api';
 export const getThreadByTag = async (email: string, tagName: string) => {
   try {
     const response = await api.post('/thread/tag', { email, tagName });
-    console.log(response);
     return response.data;
   } catch (error: unknown) {
     if (axios.isAxiosError(error) && error.response) {

@@ -69,7 +69,6 @@ export default function MindMap() {
       linkWidth={0.5}
       nodeVal={(node) => node.val}
       onNodeClick={(node) => {
-        console.log(node);
         navigate(`/threads/${node.label}`);
       }}
     />

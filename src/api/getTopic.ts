@@ -4,7 +4,6 @@ import { api } from '../util/api';
 export const getTopic = async (email: string) => {
   try {
     const response = await api.post('/thread/topic', { email });
-    console.log(response);
     return response.data;
   } catch (error: unknown) {
     if (axios.isAxiosError(error) && error.response) {

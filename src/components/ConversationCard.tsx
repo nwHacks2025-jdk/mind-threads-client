@@ -6,30 +6,23 @@ import Typography from '@mui/joy/Typography';
 import Tag from '../components/Tag';
 import { Stack } from '@mui/material';
 import { Grid } from '@mui/joy';
-import { ConversationCardProp } from '../types/ConversationCard';
+import { ConversationCardProps } from '../types/Notes';
 
-export default function ConversationCard({
-  title,
-  topic,
-  tag1,
-  tag2,
-  tag3,
-  tag4,
-  tag5,
-  messageAt,
-}: ConversationCardProp) {
+export default function ConversationCard({ note }: ConversationCardProps) {
   const navigate = useNavigate();
 
-  const formattedDate = messageAt
-    ? messageAt.toLocaleString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: true,
-      })
-    : '';
+  // Convert the numerical timestamp to a Date object
+  const messageDate = new Date(note.messageAt);
+
+  // Format the date as desired
+  const formattedDate = messageDate.toLocaleString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  });
 
   return (
     <Card
@@ -44,7 +37,9 @@ export default function ConversationCard({
           boxShadow: '0px 6px 12px rgba(0, 0, 0, 0.3)',
         },
       }}
-      onClick={() => navigate(`/conversation/${title}`)}
+      onClick={() =>
+        navigate(`/conversation/${note.title}`, { state: { note } })
+      }
     >
       <CardContent>
         <Stack>
@@ -52,7 +47,7 @@ export default function ConversationCard({
             textColor="success.plainColor"
             sx={{ fontWeight: 'md', textAlign: 'left' }}
           >
-            Conversation - {title}
+            Conversation - {note.title}
           </Typography>
           {formattedDate && (
             <Typography
@@ -65,29 +60,24 @@ export default function ConversationCard({
         </Stack>
 
         <Grid container spacing={1} sx={{ mt: 1 }}>
-          {tag1 && (
+          {note.tag2 && (
             <Grid xs={3}>
-              <Tag text={tag1} />
+              <Tag text={note.tag2} />
             </Grid>
           )}
-          {tag2 && (
+          {note.tag3 && (
             <Grid xs={3}>
-              <Tag text={tag2} />
+              <Tag text={note.tag3} />
             </Grid>
           )}
-          {tag3 && (
+          {note.tag4 && (
             <Grid xs={3}>
-              <Tag text={tag3} />
+              <Tag text={note.tag4} />
             </Grid>
           )}
-          {tag4 && (
+          {note.tag5 && (
             <Grid xs={3}>
-              <Tag text={tag4} />
-            </Grid>
-          )}
-          {tag5 && (
-            <Grid xs={3}>
-              <Tag text={tag5} />
+              <Tag text={note.tag5} />
             </Grid>
           )}
         </Grid>
@@ -108,7 +98,7 @@ export default function ConversationCard({
           borderColor: 'divider',
         }}
       >
-        {topic && topic}
+        {note.tag1}
       </CardOverflow>
     </Card>
   );
