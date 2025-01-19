@@ -2,14 +2,14 @@ import { CardContent, Typography, Box } from '@mui/material';
 import Card from '@mui/material/Card';
 
 type ContainerProps = {
-  height?: number;
+  minHeight?: number;
   title: string;
   body?: string;
   children?: React.ReactNode;
 };
 
 export default function Container({
-  height,
+  minHeight = 100,
   title,
   body,
   children,
@@ -18,7 +18,7 @@ export default function Container({
     <Card
       sx={{
         width: '100%',
-        height: height,
+        minHeight: minHeight,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -43,10 +43,9 @@ export default function Container({
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            marginBottom: 1,
           }}
         >
-          <Typography variant="h5" component="h2">
+          <Typography variant="h5" component="h2" style={{ paddingBottom: 5 }}>
             {title}
           </Typography>
         </Box>

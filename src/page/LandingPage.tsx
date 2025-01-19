@@ -67,9 +67,19 @@ export default function LandingPage() {
             alignItems: 'center',
             mb: 4,
             mt: 4,
+            width: '100%',
+            overflow: 'hidden',
           }}
         >
-          <img src="/images/logo.png" alt="logo" height={100} />
+          <img
+            src="/images/logo.png"
+            alt="logo"
+            style={{
+              maxWidth: '100%',
+              height: 'auto',
+              objectFit: 'contain',
+            }}
+          />
           <Typography variant="caption" component="i" gutterBottom>
             Thread Your Thoughts, Expand Your Mind
           </Typography>

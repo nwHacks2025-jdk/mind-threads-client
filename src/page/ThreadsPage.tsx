@@ -8,6 +8,7 @@ import Grid from '@mui/joy/Grid';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
+import Tag from '../components/Tag';
 
 export default function ThreadsPage() {
   const { tag } = useParams<{ tag: string }>();
@@ -42,23 +43,34 @@ export default function ThreadsPage() {
   }, [tag]);
 
   return (
-    <Box      
+    <Box
       sx={{
         display: 'flex',
-        flexDirection: 'column',        
-        backgroundColor: "#040F0F"
+        flexDirection: 'column',
       }}
     >
       <MenuBar />
+      <div style={{ display: 'flex', paddingTop: 20, paddingBottom: 30 }}>
+        <Tag large text={tag || 'All'} />
+      </div>
       <Box
         sx={{
           flexGrow: 1,
           // overflowY: 'auto',
-          padding: 2,          
+          padding: 2,
         }}
       >
         {isLoading ? (
-          <CircularProgress color="success" />
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: '#FFFFFF',
+            }}
+          >
+            <CircularProgress color="success" />
+          </Box>
         ) : displayNotes.length > 0 ? (
           <Grid
             container
@@ -68,7 +80,7 @@ export default function ThreadsPage() {
               display: 'flex',
               flexWrap: 'wrap',
               justifyContent: { xs: 'center', md: 'flex-start' },
-              alignItems: 'center',
+              alignItems: 'stretch',
             }}
           >
             {displayNotes.map((note) => (

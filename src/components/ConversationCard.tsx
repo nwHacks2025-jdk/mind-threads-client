@@ -30,6 +30,7 @@ export default function ConversationCard({ note }: ConversationCardProps) {
       variant="outlined"
       sx={{
         width: 350,
+        minHeight: 150,
         cursor: 'pointer',
         boxShadow: '0px 3px 3px rgba(0, 0, 0, 0.2)',
         transition: 'box-shadow 0.3s ease-in-out',
@@ -41,8 +42,14 @@ export default function ConversationCard({ note }: ConversationCardProps) {
         navigate(`/conversation/${note.title}`, { state: { note } })
       }
     >
-      <CardContent>
-        <Stack>
+      <CardContent
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+        }}
+      >
+        <Stack spacing={1}>
           <Typography
             textColor="success.plainColor"
             sx={{ fontWeight: 'md', textAlign: 'left' }}
@@ -60,34 +67,20 @@ export default function ConversationCard({ note }: ConversationCardProps) {
         </Stack>
 
         <Grid container spacing={1} sx={{ mt: 1 }}>
-          {note.tag2 && (
-            <Grid xs={5}>
-              <Tag text={note.tag2} />
+          {[note.tag2, note.tag3, note.tag4, note.tag5].map((tag, index) => (
+            <Grid xs={5} key={index}>
+              <Tag text={tag} />
             </Grid>
-          )}
-          {note.tag3 && (
-            <Grid xs={5}>
-              <Tag text={note.tag3} />
-            </Grid>
-          )}
-          {note.tag4 && (
-            <Grid xs={5}>
-              <Tag text={note.tag4} />
-            </Grid>
-          )}
-          {note.tag5 && (
-            <Grid xs={5}>
-              <Tag text={note.tag5} />
-            </Grid>
-          )}
+          ))}
         </Grid>
       </CardContent>
 
       <CardOverflow
         variant="soft"
-        color="primary"
+        // color="warning"
         sx={{
           px: 0.2,
+          backgroundColor: '#F9D66C',
           writingMode: 'vertical-rl',
           justifyContent: 'center',
           fontSize: 'xs',

@@ -2,14 +2,14 @@ import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import SchoolIcon from '@mui/icons-material/School';
-import BookIcon from '@mui/icons-material/Book';
-import PersonIcon from '@mui/icons-material/Person';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import HomeIcon from '@mui/icons-material/Home';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { Paper } from '@mui/material';
+import { VscAccount } from 'react-icons/vsc';
+import { VscHome } from 'react-icons/vsc';
+import { VscLibrary } from 'react-icons/vsc';
 
 export default function MenuBar() {
   const theme = useTheme();
@@ -28,31 +28,43 @@ export default function MenuBar() {
           />
           {!isMobile && (
             <Box
-              sx={{ marginLeft: 'auto', marginRight: '10px', display: 'flex' }}
+              sx={{
+                marginLeft: 'auto',
+                marginRight: '10px',
+                display: 'flex',
+              }}
             >
               <Button
-                color="inherit"
-                sx={{ color: 'black' }}
+                sx={{
+                  color: '#101010',
+                  borderRadius: 10,
+                  fontSize: 25,
+                }}
                 onClick={() => (window.location.href = '/home')}
               >
-                <HomeIcon sx={{ mr: 1 }} />
-                Home
+                <VscHome />
               </Button>
               <Button
                 color="inherit"
-                sx={{ color: 'black' }}
+                sx={{
+                  color: '#101010',
+                  borderRadius: 10,
+                  fontSize: 25,
+                }}
                 onClick={() => (window.location.href = '/threads')}
               >
-                <BookIcon sx={{ mr: 1 }} />
-                Notes
+                <VscLibrary />
               </Button>
               <Button
                 color="inherit"
-                sx={{ color: 'black' }}
+                sx={{
+                  color: '#101010',
+                  borderRadius: 10,
+                  fontSize: 25,
+                }}
                 onClick={() => (window.location.href = '/user')}
               >
-                <PersonIcon sx={{ mr: 1 }} />
-                User
+                <VscAccount />
               </Button>
             </Box>
           )}
@@ -60,32 +72,45 @@ export default function MenuBar() {
       </AppBar>
 
       {isMobile && (
-        <BottomNavigation
+        <Paper
           sx={{
             position: 'fixed',
-            zIndex: 10,
             bottom: 0,
             left: 0,
             right: 0,
             backgroundColor: '#59da90',
+            paddingBottom: '60px',
+            zIndex: 10,
           }}
+          elevation={3}
         >
-          <BottomNavigationAction
-            label="Home"
-            icon={<HomeIcon />}
-            onClick={() => (window.location.href = '/home')}
-          />
-          <BottomNavigationAction
-            label="Study"
-            icon={<SchoolIcon />}
-            onClick={() => (window.location.href = '/threads')}
-          />
-          <BottomNavigationAction
-            label="User"
-            icon={<PersonIcon />}
-            onClick={() => (window.location.href = '/user')}
-          />
-        </BottomNavigation>
+          <BottomNavigation
+            sx={{
+              position: 'fixed',
+              zIndex: 10,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              backgroundColor: '#ffffff',
+            }}
+          >
+            <BottomNavigationAction
+              label="Home"
+              icon={<VscHome size={26} />}
+              onClick={() => (window.location.href = '/home')}
+            />
+            <BottomNavigationAction
+              label="Study"
+              icon={<VscLibrary size={26} />}
+              onClick={() => (window.location.href = '/threads')}
+            />
+            <BottomNavigationAction
+              label="User"
+              icon={<VscAccount size={26} />}
+              onClick={() => (window.location.href = '/user')}
+            />
+          </BottomNavigation>
+        </Paper>
       )}
     </>
   );

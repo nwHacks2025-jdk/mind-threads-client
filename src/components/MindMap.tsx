@@ -93,7 +93,6 @@ export default function MindMap() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '100vh',
           backgroundColor: '#FFFFFF',
         }}
       >
@@ -107,7 +106,6 @@ export default function MindMap() {
       <Box
         sx={{
           display: 'flex',
-          height: '100vh',
           justifyContent: 'center',
           alignItems: 'center',
           padding: 2,
@@ -128,8 +126,8 @@ export default function MindMap() {
         top: 0,
         left: 0,
         width: dimensions.width,
-        height: dimensions.height,
         backgroundColor: '#040F0F',
+        paddingBottom: '10%',
       }}
     >
       <ForceGraph3D
@@ -137,13 +135,13 @@ export default function MindMap() {
         graphData={graphData!}
         width={dimensions.width}
         height={dimensions.height}
-        backgroundColor="#040F0F"
+        backgroundColor="#FFFFFF"
         nodeLabel={(node) => `<div><b>${node.label}</b></div>`}
         nodeAutoColorBy="id"
         linkColor={() => 'rgba(256, 256, 256, 1)'}
         linkOpacity={1}
-        linkWidth={0.5}
-        nodeVal={(node) => node.val}
+        linkWidth={0.9}
+        nodeVal={(node) => Math.max(node.val * 1, 2)}
         onNodeClick={(node) => {
           navigate(`/threads/${node.label}`);
         }}
