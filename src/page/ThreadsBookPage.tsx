@@ -69,12 +69,16 @@ export default function ThreadsBookPage() {
         ) : topic && topic.nodes.length > 0 ? (
           <Grid
             container
-            spacing={0}
+            spacing={4}
             columns={12}
             sx={{
               display: 'flex',
               flexWrap: 'wrap',
-              justifyContent: { xs: 'center', md: 'flex-start' },
+              justifyContent: {
+                xs: 'center',
+                md: 'flex-start',
+                paddingTop: 20,
+              },
               alignItems: 'stretch',
             }}
           >
@@ -108,13 +112,11 @@ export default function ThreadsBookPage() {
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
-                      justifyContent: 'center'
+                      justifyContent: 'center',
                     }}
                   >
                     <TitleTag large text={node.category} />
-                    <Typography level="body2">
-                      {node.count} notes
-                    </Typography>
+                    <Typography level="body-md">{node.count} notes</Typography>
                   </Box>
                 </Grid>
               ))}

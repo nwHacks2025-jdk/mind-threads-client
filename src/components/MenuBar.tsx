@@ -106,7 +106,7 @@ export default function MenuBar() {
             <BottomNavigationAction
               label="Study"
               icon={<VscLibrary size={26} />}
-              onClick={() => (window.location.href = '/threads')}
+              onClick={() => (window.location.href = '/threads-book')}
             />
             <BottomNavigationAction
               label="User"

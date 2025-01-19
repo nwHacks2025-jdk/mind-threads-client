@@ -140,7 +140,7 @@ export default function UserPage() {
   return (
     <>
       <MenuBar />
-      <Box sx={{ p: 3 }}>
+      <Box>
         <WelcomeHeader title={`Hi, ${userName}`} />
         <Box sx={{ mt: 3 }}>
           <Grid

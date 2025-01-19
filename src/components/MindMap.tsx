@@ -126,7 +126,7 @@ export default function MindMap() {
         top: 0,
         left: 0,
         width: dimensions.width,
-        backgroundColor: '#040F0F',
+        backgroundColor: '#ffffff',
         paddingBottom: '10%',
       }}
     >
