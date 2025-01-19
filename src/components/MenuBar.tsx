@@ -10,6 +10,8 @@ import { Paper } from '@mui/material';
 import { VscAccount } from 'react-icons/vsc';
 import { VscHome } from 'react-icons/vsc';
 import { VscLibrary } from 'react-icons/vsc';
+import { VscSearch } from "react-icons/vsc";
+
 
 export default function MenuBar() {
   const theme = useTheme();
@@ -65,6 +67,18 @@ export default function MenuBar() {
                   borderRadius: 10,
                   gap: 1,
                 }}
+                onClick={() => (window.location.href = '/threads')}
+              >
+                <VscSearch size={25} />
+                Search
+              </Button>
+              <Button
+                color="inherit"
+                sx={{
+                  color: '#101010',
+                  borderRadius: 10,
+                  gap: 1,
+                }}
                 onClick={() => (window.location.href = '/user')}
               >
                 <VscAccount size={25} />
@@ -107,6 +121,11 @@ export default function MenuBar() {
               label="Study"
               icon={<VscLibrary size={26} />}
               onClick={() => (window.location.href = '/threads-book')}
+            />
+            <BottomNavigationAction
+              label="Search"
+              icon={<VscSearch size={26} />}
+              onClick={() => (window.location.href = '/threads')}
             />
             <BottomNavigationAction
               label="User"

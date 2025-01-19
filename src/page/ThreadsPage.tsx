@@ -8,6 +8,7 @@ import Grid from '@mui/joy/Grid';
 import Box from '@mui/joy/Box';
 import Typography from '@mui/joy/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
+import TextField from '@mui/material/TextField';  // <--- Import a TextField
 import Tag from '../components/Tag';
 
 export default function ThreadsPage() {
@@ -15,6 +16,10 @@ export default function ThreadsPage() {
   const [displayNotes, setDisplayNotes] = useState<Note[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  // NEW: State for the search input
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+  // Fetch notes by tag from the server (or all if no tag in URL).
   useEffect(() => {
     const email = localStorage.getItem('email') || '';
     setIsLoading(true);
@@ -42,6 +47,16 @@ export default function ThreadsPage() {
     }
   }, [tag]);
 
+// Create a filtered version of displayNotes
+  const filteredNotes = displayNotes.filter((note) => {
+    // Convert the search term to lowercase
+    const lowerSearch = searchTerm.toLowerCase();
+
+    // Filter by tag1 only.
+    // Make sure to handle the case where tag1 might be empty or undefined.
+    return note.tag1?.toLowerCase().includes(lowerSearch);
+  });
+
   return (
     <Box
       sx={{
@@ -53,10 +68,20 @@ export default function ThreadsPage() {
       <div style={{ display: 'flex', paddingTop: 20, paddingBottom: 30 }}>
         <Tag large text={tag || 'All'} />
       </div>
+
+      <Box sx={{ display: 'flex', maxWidth: 400, marginBottom: 2 }}>
+        <TextField
+          label="Search for tags"
+          variant="outlined"
+          fullWidth
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </Box>
+
       <Box
         sx={{
           flexGrow: 1,
-          // overflowY: 'auto',
           padding: 2,
         }}
       >
@@ -71,7 +96,7 @@ export default function ThreadsPage() {
           >
             <CircularProgress color="success" />
           </Box>
-        ) : displayNotes.length > 0 ? (
+        ) : filteredNotes.length > 0 ? (
           <Grid
             container
             spacing={5}
@@ -83,7 +108,7 @@ export default function ThreadsPage() {
               alignItems: 'stretch',
             }}
           >
-            {displayNotes.map((note) => (
+            {filteredNotes.map((note) => (
               <Grid
                 key={note.id}
                 xs={12}
