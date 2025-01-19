@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 
-function HomePage() {
+export default function HomePage() {
   return (
     <div>
       <Button variant="outlined" color="primary" href="login">
@@ -9,5 +9,3 @@ function HomePage() {
     </div>
   );
 }
-
-export default HomePage;

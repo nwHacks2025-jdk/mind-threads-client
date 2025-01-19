@@ -1,7 +1,7 @@
 import MenuBar from '../components/MenuBar';
 import MindMap from '../components/MindMap';
 
-function LandingPage() {
+export default function LandingPage() {
   return (
     <>
       <MenuBar />
@@ -9,5 +9,3 @@ function LandingPage() {
     </>
   );
 }
-
-export default LandingPage;

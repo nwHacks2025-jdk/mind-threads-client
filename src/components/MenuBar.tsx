@@ -17,44 +17,43 @@ export default function MenuBar() {
 
   return (
     <>
-      <Box sx={{ display: 'flex' }}>
-        <AppBar position="fixed" sx={{ backgroundColor: '#59da90' }}>
-          <Toolbar>
-            <img
-              src="logo.svg"
-              alt="logo"
-              height={40}
-              style={{ cursor: 'pointer' }}
-              onClick={() => (window.location.href = 'home')}
-            />
-            {!isMobile && (
-              <Box sx={{ marginLeft: 'auto', display: 'flex' }}>
-                <Button
-                  color="inherit"
-                  sx={{ color: 'black' }}
-                  onClick={() => (window.location.href = 'study')}
-                >
-                  <BookIcon sx={{ mr: 1 }} />
-                  Notes
-                </Button>
-                <Button
-                  color="inherit"
-                  sx={{ color: 'black' }}
-                  onClick={() => (window.location.href = 'user')}
-                >
-                  <PersonIcon sx={{ mr: 1 }} />
-                  User
-                </Button>
-              </Box>
-            )}
-          </Toolbar>
-        </AppBar>
-      </Box>
+      <AppBar position="fixed" sx={{ backgroundColor: '#59da90' }}>
+        <Toolbar>
+          <img
+            src="logo.svg"
+            alt="logo"
+            height={40}
+            style={{ cursor: 'pointer' }}
+            onClick={() => (window.location.href = 'home')}
+          />
+          {!isMobile && (
+            <Box sx={{ marginLeft: 'auto', display: 'flex' }}>
+              <Button
+                color="inherit"
+                sx={{ color: 'black' }}
+                onClick={() => (window.location.href = 'study')}
+              >
+                <BookIcon sx={{ mr: 1 }} />
+                Notes
+              </Button>
+              <Button
+                color="inherit"
+                sx={{ color: 'black' }}
+                onClick={() => (window.location.href = 'user')}
+              >
+                <PersonIcon sx={{ mr: 1 }} />
+                User
+              </Button>
+            </Box>
+          )}
+        </Toolbar>
+      </AppBar>
 
       {isMobile && (
         <BottomNavigation
           sx={{
             position: 'fixed',
+            zIndex: 10,
             bottom: 0,
             left: 0,
             right: 0,

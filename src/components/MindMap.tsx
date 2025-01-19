@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ForceGraph3D } from 'react-force-graph';
 
-const GraphComponent: React.FC = () => {
+export default function MindMap() {
   const [graphData, setGraphData] = useState<{
     nodes: any[];
     links: any[];
@@ -10,7 +10,7 @@ const GraphComponent: React.FC = () => {
 
   useEffect(() => {
     // TODO: fetch data from the server
-    fetch('../../public/datasets/data.json')
+    fetch('/datasets/data.json')
       .then((res) => res.json())
       .then((data) => {
         const nodeDegreeMap: Record<string, number> = {};
@@ -55,6 +55,4 @@ const GraphComponent: React.FC = () => {
       }}
     />
   );
-};
-
-export default GraphComponent;
+}
