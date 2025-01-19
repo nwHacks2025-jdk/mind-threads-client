@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { api } from '../util/api';
 
-export const getThreadByTag = async (email: string, tagName: string) => {
+export const getThreadByTag = async (email: string, tagName?: string) => {
   try {
     const response = await api.post('/thread/tag', { email, tagName });
     return response.data;
