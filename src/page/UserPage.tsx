@@ -150,9 +150,7 @@ export default function UserPage() {
           >
             <Grid xs={12} md={4} sx={{ display: 'flex', gap: 3 }}>
               <StatContainer value={stats.length} height={200}>
-                <Typography>
-                  7-Day Productivity Score
-                </Typography>
+                <Typography>7-Day Productivity Score</Typography>
               </StatContainer>
               <Container title="Your GPT Usage Rank" height={200}>
                 <Typography>
