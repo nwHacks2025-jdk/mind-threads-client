@@ -106,7 +106,7 @@ export default function UserPage() {
           backgroundColor: '#FFFFFF',
         }}
       >
-        <CircularProgress color="success" />
+        <CircularProgress color="success" thickness={3} />
       </Box>
     );
   }
