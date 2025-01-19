@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */ // fix later
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ForceGraph3D } from 'react-force-graph';
@@ -15,6 +14,10 @@ export default function MindMap() {
   } | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
   const graphRef = useRef<any>(null);
   const navigate = useNavigate();
 
@@ -58,6 +61,10 @@ export default function MindMap() {
 
   useEffect(() => {
     const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
       if (graphRef.current) {
         setTimeout(() => {
           graphRef.current.zoomToFit(1000);
@@ -69,6 +76,15 @@ export default function MindMap() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Adjust the forces after the graph instance is ready
+  useEffect(() => {
+    if (graphRef.current) {
+      const graph = graphRef.current;
+      graph.d3Force('link')?.distance(30); // Set the distance between connected nodes
+      graph.d3Force('charge')?.strength(-50); // Control repulsion between nodes
+    }
+  }, [graphData]);
+
   if (isLoading) {
     return (
       <Box
@@ -76,6 +92,7 @@ export default function MindMap() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          height: '100vh',
           backgroundColor: '#FFFFFF',
         }}
       >
@@ -104,19 +121,32 @@ export default function MindMap() {
   }
 
   return (
-    <ForceGraph3D
-      ref={graphRef}
-      graphData={graphData!}
-      backgroundColor="#FFFFFF"
-      nodeLabel={(node) => `<div><b>${node.label}</b></div>`}
-      nodeAutoColorBy="id"
-      linkColor={() => 'rgba(14, 14, 14, 0.2)'}
-      linkOpacity={1}
-      linkWidth={0.5}
-      nodeVal={(node) => node.val}
-      onNodeClick={(node) => {
-        navigate(`/threads/${node.label}`);
+    <Box
+      sx={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        width: dimensions.width,
+        height: dimensions.height,
+        backgroundColor: '#040F0F',
       }}
-    />
+    >
+      <ForceGraph3D
+        ref={graphRef}
+        graphData={graphData!}
+        width={dimensions.width}
+        height={dimensions.height}
+        backgroundColor="#040F0F"
+        nodeLabel={(node) => `<div><b>${node.label}</b></div>`}
+        nodeAutoColorBy="id"
+        linkColor={() => 'rgba(256, 256, 256, 1)'}
+        linkOpacity={1}
+        linkWidth={0.5}
+        nodeVal={(node) => node.val}
+        onNodeClick={(node) => {
+          navigate(`/threads/${node.label}`);
+        }}
+      />
+    </Box>
   );
 }
