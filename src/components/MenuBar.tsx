@@ -76,7 +76,7 @@ export default function MenuBar() {
           <BottomNavigationAction
             label="Study"
             icon={<SchoolIcon />}
-            onClick={() => (window.location.href = '/study')}
+            onClick={() => (window.location.href = '/threads')}
           />
           <BottomNavigationAction
             label="User"
