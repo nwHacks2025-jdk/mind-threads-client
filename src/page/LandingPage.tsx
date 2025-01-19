@@ -26,9 +26,10 @@ export default function LandingPage() {
       setLoading(true);
 
       try {
-        const success = await login(email);
+        const success = await login(email);        
 
         if (success) {
+          localStorage.setItem('email', email);
           authLogin();
           navigate('/home');
         } else {

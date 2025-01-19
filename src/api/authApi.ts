@@ -4,7 +4,7 @@ export const login = async (email: string): Promise<boolean> => {
   try {
     const response = await axios.post(`/api/member`, { email });
 
-    if (response.status === 200) {
+    if (response.status === 200) {      
       return true;
     } else {
       throw new Error(`Error: ${response.status}`);
