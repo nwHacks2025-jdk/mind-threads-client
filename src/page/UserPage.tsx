@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { getMemberStats, getAvgAllMemberStats } from '../api/getStats';
 import axios from 'axios';
 import { MemberStat } from '../types/MemberStats';
+import WelcomeHeader from '../components/WelcomeHeader.tsx';
+import StatContainer from '../components/StatContainer.tsx';
 
 export default function UserPage() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -135,8 +137,7 @@ export default function UserPage() {
     <>
       <MenuBar />
       <Box sx={{ p: 3 }}>
-        <Container title={`Hi, ${userName}`} />
-
+        <WelcomeHeader title={`Hi, ${userName}`} />
         <Box sx={{ mt: 3 }}>
           <Grid
             container
@@ -148,11 +149,11 @@ export default function UserPage() {
             }}
           >
             <Grid xs={12} md={4} sx={{ display: 'flex', gap: 3 }}>
-              <Container title="Did you KNOW??" height={200}>
+              <StatContainer value={stats.length} height={200}>
                 <Typography>
-                  You have {stats.length} days of usage data.
+                  7-Day Productivity Score
                 </Typography>
-              </Container>
+              </StatContainer>
               <Container title="Your GPT Usage Rank" height={200}>
                 <Typography>
                   You are in the top{' '}
